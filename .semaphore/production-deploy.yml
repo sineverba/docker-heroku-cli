@@ -18,7 +18,7 @@ global_job_config:
     - name: DOCKER_USERNAME
       value: sineverba
     - name: DOCKER_IMAGE
-      value: heroku
+      value: heroku-cli
 
 blocks:
   - name: 'Build and deploy'
