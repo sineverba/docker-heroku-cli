@@ -16,7 +16,7 @@ global_job_config:
     - name: DOCKER_USERNAME
       value: sineverba
     - name: DOCKER_IMAGE
-      value: heroku
+      value: heroku-cli
 
 blocks:
   - name: 'Build and test'
@@ -28,7 +28,8 @@ blocks:
           commands:
             - checkout
             - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE .
-            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE heroku -v | grep "7.59.0"
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE heroku -v | grep "7.59.1"
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE npm -v | grep "8.1.1"
       secrets:
         - name: DOCKER_TOKEN
 
