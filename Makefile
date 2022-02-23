@@ -1,12 +1,16 @@
+IMAGE_NAME=sineverba/testdockervercel
+CONTAINER_NAME=testdockervercel
+
 build:
-	docker build --tag sineverba/testdockerheroku .
+	docker build --tag $(IMAGE_NAME) .
 
 test:
-	docker run --rm -it sineverba/testdockerheroku heroku -v | grep "7.59.1"
-	docker run --rm -it sineverba/testdockerheroku npm -v | grep "8.1.1"
+	docker run --name $(CONTAINER_NAME) --rm -it $(IMAGE_NAME) node -v | grep "16.14.0"
+	docker run --name $(CONTAINER_NAME) --rm -it $(IMAGE_NAME) npm -v | grep "8.5.1"
+	docker run --name $(CONTAINER_NAME) --rm -it $(IMAGE_NAME) heroku -v | grep "7.59.2"
 
 apps:
-	docker run --rm -it -v ~/.netrc:/root/.netrc sineverba/testdockerheroku heroku apps
+	docker run --rm -it -v ~/.netrc:/root/.netrc $(IMAGE_NAME) heroku apps
 
 destroy:
-	docker image rm sineverba/testdockerheroku
+	docker image rm $(IMAGE_NAME)
