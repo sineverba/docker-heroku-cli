@@ -1,12 +1,15 @@
 version: v1.0
 
-name: Build and test Pipeline
+name: Test
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu1804
+    os_image: ubuntu2004
 
 global_job_config:
+
+  secrets:
+    - name: ACCESS_TOKENS
 
   prologue:
     commands:
@@ -28,10 +31,9 @@ blocks:
           commands:
             - checkout
             - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE .
-            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE heroku -v | grep "7.59.1"
-            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE npm -v | grep "8.1.1"
-      secrets:
-        - name: DOCKER_TOKEN
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE node -v | grep "16.14.0"
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE npm -v | grep "8.5.1"
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE heroku -v | grep "7.59.2"
 
 promotions:
   - name: Deploy
