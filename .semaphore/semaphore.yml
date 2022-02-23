@@ -33,7 +33,7 @@ blocks:
             - docker build --tag $DOCKER_USERNAME/$DOCKER_IMAGE .
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE node -v | grep "16.14.0"
             - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE npm -v | grep "8.5.1"
-            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE heroku -v | grep "7.59.1"
+            - docker run --rm $DOCKER_USERNAME/$DOCKER_IMAGE heroku -v | grep "7.59.2"
 
 promotions:
   - name: Deploy
