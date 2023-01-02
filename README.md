@@ -1,6 +1,10 @@
 Docker Heroku CLI
 =================
 
+# Deprecated
+
+I deprecated this repository becase Heroku ceased free plan on November 2022, so I don't need anymore for myself. If someone want, I can transfer entire repository. No update anymore, security or functional.
+
 > Docker image to use Heroku cli without installing it
 
 | CD / CI   | Status |
